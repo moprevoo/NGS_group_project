@@ -1,0 +1,579 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "format-version": "0.1",
+    "name": "NGS_final",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "NGS_Avans_3.1.fastq.gz"
+                }
+            ],
+            "label": "NGS_Avans_3.1.fastq.gz",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 10,
+                "top": 10
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "052c241e-dfe3-4066-b8d5-942d057a354e",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "NGS_Avans_3.2.fastq.gz"
+                }
+            ],
+            "label": "NGS_Avans_3.2.fastq.gz",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 10,
+                "top": 130
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "63ad7c61-c059-48a1-9448-747c4ef4662b",
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "input_file": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "FastQC",
+            "outputs": [
+                {
+                    "name": "html_file",
+                    "type": "html"
+                },
+                {
+                    "name": "text_file",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 230,
+                "top": 10
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "e7b2202befea",
+                "name": "fastqc",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger.gz\", \"adapters\": null, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"contaminants\": null, \"input_file\": null, \"kmers\": \"7\", \"limits\": null, \"min_length\": null, \"nogroup\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.72+galaxy1",
+            "type": "tool",
+            "uuid": "ce0c4488-06f3-4b49-aeb0-0fac1864d541",
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "input_file": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "FastQC",
+            "outputs": [
+                {
+                    "name": "html_file",
+                    "type": "html"
+                },
+                {
+                    "name": "text_file",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 230,
+                "top": 130
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "e7b2202befea",
+                "name": "fastqc",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger.gz\", \"adapters\": null, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"contaminants\": null, \"input_file\": null, \"kmers\": \"7\", \"limits\": null, \"min_length\": null, \"nogroup\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.72+galaxy1",
+            "type": "tool",
+            "uuid": "0c135fb8-525e-4d99-92f4-7c9eaa39f313",
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "readtype|fastq_r1_in": {
+                    "id": 0,
+                    "output_name": "output"
+                },
+                "readtype|fastq_r2_in": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Trimmomatic",
+            "outputs": [
+                {
+                    "name": "fastq_out_r1_paired",
+                    "type": "input"
+                },
+                {
+                    "name": "fastq_out_r2_paired",
+                    "type": "input"
+                },
+                {
+                    "name": "fastq_out_r1_unpaired",
+                    "type": "input"
+                },
+                {
+                    "name": "fastq_out_r2_unpaired",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 230,
+                "top": 250
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.36.4",
+            "tool_shed_repository": {
+                "changeset_revision": "415a165d92bb",
+                "name": "trimmomatic",
+                "owner": "pjbriggs",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger.gz\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"illuminaclip\": {\"do_illuminaclip\": \"false\", \"__current_case__\": 1}, \"operations\": [{\"__index__\": 0, \"operation\": {\"name\": \"SLIDINGWINDOW\", \"__current_case__\": 0, \"window_size\": \"4\", \"required_quality\": \"20\"}}], \"readtype\": {\"single_or_paired\": \"pair_of_files\", \"__current_case__\": 1, \"fastq_r1_in\": null, \"fastq_r2_in\": null}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.36.4",
+            "type": "tool",
+            "uuid": "7306a931-3137-4899-aed9-1e68eaa92849",
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "input_file": {
+                    "id": 4,
+                    "output_name": "fastq_out_r2_paired"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "FastQC",
+            "outputs": [
+                {
+                    "name": "html_file",
+                    "type": "html"
+                },
+                {
+                    "name": "text_file",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 450,
+                "top": 10
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "e7b2202befea",
+                "name": "fastqc",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger\", \"adapters\": null, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"contaminants\": null, \"input_file\": null, \"kmers\": \"7\", \"limits\": null, \"min_length\": null, \"nogroup\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.72+galaxy1",
+            "type": "tool",
+            "uuid": "4328a25a-12db-4d25-81bc-f045f3a013ad",
+            "workflow_outputs": []
+        },
+        "6": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+            "errors": null,
+            "id": 6,
+            "input_connections": {
+                "input_file": {
+                    "id": 4,
+                    "output_name": "fastq_out_r1_paired"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "FastQC",
+            "outputs": [
+                {
+                    "name": "html_file",
+                    "type": "html"
+                },
+                {
+                    "name": "text_file",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 450,
+                "top": 130
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "e7b2202befea",
+                "name": "fastqc",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger.gz\", \"adapters\": null, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"contaminants\": null, \"input_file\": null, \"kmers\": \"7\", \"limits\": null, \"min_length\": null, \"nogroup\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.72+galaxy1",
+            "type": "tool",
+            "uuid": "b9819676-f0fc-43a4-b1b6-8f259dd2e7ce",
+            "workflow_outputs": []
+        },
+        "7": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/unicycler/unicycler/0.4.8.0",
+            "errors": null,
+            "id": 7,
+            "input_connections": {
+                "paired_unpaired|fastq_input1": {
+                    "id": 4,
+                    "output_name": "fastq_out_r1_paired"
+                },
+                "paired_unpaired|fastq_input2": {
+                    "id": 4,
+                    "output_name": "fastq_out_r2_paired"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Create assemblies with Unicycler",
+            "outputs": [
+                {
+                    "name": "assembly_graph",
+                    "type": "gfa1"
+                },
+                {
+                    "name": "assembly",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "left": 450,
+                "top": 250
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/unicycler/unicycler/0.4.8.0",
+            "tool_shed_repository": {
+                "changeset_revision": "9e3e80cc4ad4",
+                "name": "unicycler",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"graph_clean\": {\"min_component_size\": \"1000\", \"min_dead_end_size\": \"1000\"}, \"linear_seqs\": \"0\", \"long\": null, \"lr_align\": {\"contamination\": null, \"scores\": \"3,-6,-5,-2\", \"low_score\": null}, \"min_anchor_seg_len\": null, \"min_fasta_length\": \"100\", \"mode\": \"normal\", \"paired_unpaired\": {\"fastq_input_selector\": \"paired\", \"__current_case__\": 0, \"fastq_input1\": null, \"fastq_input2\": null}, \"pilon\": {\"no_pilon\": \"false\", \"min_polish_size\": \"1000\"}, \"rotation\": {\"no_rotate\": \"false\", \"start_genes\": null, \"start_gene_id\": \"90.0\", \"start_gene_cov\": \"95.0\"}, \"spades\": {\"no_correct\": \"false\", \"min_kmer_frac\": \"0.2\", \"max_kmer_frac\": \"0.95\", \"kmers\": \"\", \"kmer_count\": \"10\", \"depth_filter\": \"0.25\", \"largest_component\": \"false\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.4.8.0",
+            "type": "tool",
+            "uuid": "e654f4e0-fbfb-43f0-aeca-3b76923b3880",
+            "workflow_outputs": []
+        },
+        "8": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.7",
+            "errors": null,
+            "id": 8,
+            "input_connections": {
+                "results_0|software_cond|output_0|input": [
+                    {
+                        "id": 6,
+                        "output_name": "text_file"
+                    },
+                    {
+                        "id": 5,
+                        "output_name": "text_file"
+                    },
+                    {
+                        "id": 3,
+                        "output_name": "text_file"
+                    },
+                    {
+                        "id": 2,
+                        "output_name": "text_file"
+                    }
+                ]
+            },
+            "inputs": [],
+            "label": null,
+            "name": "MultiQC",
+            "outputs": [
+                {
+                    "name": "stats",
+                    "type": "input"
+                },
+                {
+                    "name": "html_report",
+                    "type": "html"
+                }
+            ],
+            "position": {
+                "left": 670,
+                "top": 10
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.7",
+            "tool_shed_repository": {
+                "changeset_revision": "b2f1f75d49c4",
+                "name": "multiqc",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"txt\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"comment\": \"\", \"results\": [{\"__index__\": 0, \"software_cond\": {\"software\": \"fastqc\", \"__current_case__\": 8, \"output\": [{\"__index__\": 0, \"type\": \"data\", \"input\": null}]}}], \"saveLog\": \"false\", \"title\": \"\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.7",
+            "type": "tool",
+            "uuid": "b8c32ae0-1ec3-4275-ad30-f1fc199dbc80",
+            "workflow_outputs": []
+        },
+        "9": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy1",
+            "errors": null,
+            "id": 9,
+            "input_connections": {
+                "in|inputs": {
+                    "id": 7,
+                    "output_name": "assembly"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Quast",
+            "outputs": [
+                {
+                    "name": "quast_tabular",
+                    "type": "tabular"
+                },
+                {
+                    "name": "report_html",
+                    "type": "html"
+                },
+                {
+                    "name": "report_pdf",
+                    "type": "pdf"
+                },
+                {
+                    "name": "log",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 670,
+                "top": 130
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "ebb0dcdb621a",
+                "name": "quast",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"al\": {\"use_all_alignments\": \"false\", \"min_alignment\": \"65\", \"min_identity\": \"95.0\", \"ambiguity_usage\": \"one\", \"ambiguity_score\": \"0.99\", \"fragmented\": \"false\", \"fragmented_max_indent\": \"50\", \"upper_bound_assembly\": \"false\", \"upper_bound_min_con\": \"2\"}, \"assembly\": {\"type\": \"genome\", \"__current_case__\": 0, \"ref\": {\"use_ref\": \"false\", \"__current_case__\": 1, \"est_ref_size\": null}, \"orga_type\": \"\"}, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"circos\": \"false\", \"contig_thresholds\": \"0,1000\", \"extensive_mis_size\": \"1000\", \"genes\": {\"gene_finding\": {\"tool\": \"none\", \"__current_case__\": 0}, \"rna_finding\": \"false\", \"conserved_genes_finding\": \"false\"}, \"in\": {\"custom\": \"false\", \"__current_case__\": 1, \"inputs\": null}, \"k_mer\": {\"k_mer_stats\": \"\", \"__current_case__\": 1}, \"large\": \"false\", \"min_contig\": \"500\", \"scaffold_gap_max_size\": \"1000\", \"skip_unaligned_mis_contigs\": \"true\", \"split_scaffolds\": \"false\", \"strict_NA\": \"false\", \"unaligned_part_size\": \"500\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "5.0.2+galaxy1",
+            "type": "tool",
+            "uuid": "b2ae3eeb-23a8-499f-8dd7-a19994259b08",
+            "workflow_outputs": []
+        },
+        "10": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/nml/staramr/staramr_search/0.7.2+galaxy0",
+            "errors": null,
+            "id": 10,
+            "input_connections": {
+                "genomes": {
+                    "id": 7,
+                    "output_name": "assembly"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "staramr",
+            "outputs": [
+                {
+                    "name": "blast_hits",
+                    "type": "input"
+                },
+                {
+                    "name": "mlst",
+                    "type": "tabular"
+                },
+                {
+                    "name": "summary",
+                    "type": "tabular"
+                },
+                {
+                    "name": "detailed_summary",
+                    "type": "tabular"
+                },
+                {
+                    "name": "resfinder",
+                    "type": "tabular"
+                },
+                {
+                    "name": "plasmidfinder",
+                    "type": "tabular"
+                },
+                {
+                    "name": "settings",
+                    "type": "txt"
+                },
+                {
+                    "name": "excel",
+                    "type": "xlsx"
+                }
+            ],
+            "position": {
+                "left": 670,
+                "top": 250
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/nml/staramr/staramr_search/0.7.2+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "4b9a8031ab74",
+                "name": "staramr",
+                "owner": "nml",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fasta\", \"advanced\": {\"pid_threshold\": \"98.0\", \"plength_resfinder\": \"60.0\", \"plength_pointfinder\": \"95.0\", \"plength_plasmidfinder\": \"60.0\", \"genome_size_lower_bound\": \"4000000\", \"genome_size_upper_bound\": \"6000000\", \"minimum_N50_value\": \"10000\", \"minimum_contig_length\": \"300\", \"unacceptable_number_contigs\": \"1000\", \"report_all_blast\": \"false\", \"exclude_negatives\": \"false\", \"exclude_resistance_phenotypes\": \"false\", \"mlst_scheme\": \"auto\", \"exclude_genes\": {\"exclude_genes_condition\": \"default\", \"__current_case__\": 0}, \"plasmidfinder_type\": \"include_all\"}, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"genomes\": null, \"use_pointfinder\": \"disabled\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.7.2+galaxy0",
+            "type": "tool",
+            "uuid": "018d65e3-7599-4a8f-830c-7bb3ad0b4ca9",
+            "workflow_outputs": []
+        },
+        "11": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/kraken2/kraken2/2.1.1+galaxy1",
+            "errors": null,
+            "id": 11,
+            "input_connections": {
+                "single_paired|input_sequences": {
+                    "id": 7,
+                    "output_name": "assembly"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Kraken2",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "left": 670,
+                "top": 370
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/kraken2/kraken2/2.1.1+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "e674066930b2",
+                "name": "kraken2",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fasta\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"confidence\": \"0.0\", \"kraken2_database\": \"2020-06-24T164454Z_standard_kmer-len_35_minimizer-len_31_minimizer-spaces_6\", \"min_base_quality\": \"0\", \"minimum_hit_groups\": \"2\", \"quick\": \"false\", \"report\": {\"create_report\": \"false\", \"use_mpa_style\": \"false\", \"report_zero_counts\": \"false\", \"report_minimizer_data\": \"false\"}, \"single_paired\": {\"single_paired_selector\": \"no\", \"__current_case__\": 2, \"input_sequences\": null}, \"split_reads\": \"false\", \"use_names\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "2.1.1+galaxy1",
+            "type": "tool",
+            "uuid": "46c4bd1c-6fcb-4351-b57f-ee1b2f89d4b4",
+            "workflow_outputs": []
+        },
+        "12": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/kraken2tax/Kraken2Tax/1.2",
+            "errors": null,
+            "id": 12,
+            "input_connections": {
+                "input": {
+                    "id": 11,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Convert Kraken",
+            "outputs": [
+                {
+                    "name": "out_file",
+                    "type": "taxonomy"
+                }
+            ],
+            "position": {
+                "left": 890,
+                "top": 10
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/kraken2tax/Kraken2Tax/1.2",
+            "tool_shed_repository": {
+                "changeset_revision": "f03c7ba8d8bc",
+                "name": "kraken2tax",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"input\": null, \"ncbi_taxonomy\": \"2020-12-03\", \"read_name\": \"2\", \"tax_id\": \"3\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.2",
+            "type": "tool",
+            "uuid": "f6b6a2d7-af72-4188-b958-d77a556c5e9b",
+            "workflow_outputs": []
+        }
+    },
+    "tags": [],
+    "uuid": "fd4a272e-9543-4526-bf7b-f287c1770d4e",
+    "version": 0
+}
